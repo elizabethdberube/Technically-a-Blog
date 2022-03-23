@@ -1,5 +1,5 @@
 const express = require('express');
-const routes = require('./routes');
+const routes = require('./controllers');
 const exphbs = require('express-handlebars');
 const sequelize = require('./config/connection');
 
@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // use routes
 app.use(routes);
+app.use(express.static('public'));
 
 // sync models to the database and turns on server
 sequelize.sync({ force: false }).then(() => {
