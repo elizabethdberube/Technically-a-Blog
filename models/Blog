@@ -1,0 +1,30 @@
+const { Model, Datatypes } = require('sequelize');
+const sequelize = require('../config/connections.js');
+
+// extends off Sequelize's Model class
+class Blog extends Model { }
+
+// fields and rules for Blogs model
+Blog.init(
+
+    {
+        id: {
+            type: Datatypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        blog: {
+            type: Datatypes.STRING,
+            allowNull: false
+        }
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true
+    }
+);
+
+module.exports = Blog; 

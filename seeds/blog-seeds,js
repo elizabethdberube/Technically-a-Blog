@@ -1,0 +1,12 @@
+const { Blogs } = require('../blogs');
+
+const blogData = [
+
+    {
+        blog: 'Example'
+    },
+];
+
+const seedBlogs = () => Blogs.bulkCreate(blogData);
+
+module.exports = seedBlogs;
