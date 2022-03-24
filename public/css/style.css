@@ -18,8 +18,13 @@ body {
 
   .nav-bar {
 
-    justify-content: left;
     background-color: white !important;
+
+  }
+
+  .navbar {
+
+    justify-content: left;
 
   }
 
