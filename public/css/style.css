@@ -3,3 +3,37 @@ body {
     background-image: url("/background.jpg");
     
   }
+  .con-div {
+
+    background-color: white;
+  }
+
+  .jumbotron {
+    
+    background-color: white;
+    margin-bottom: 0;
+
+
+  }
+
+  .nav-bar {
+
+    justify-content: left;
+    background-color: white !important;
+
+  }
+
+  .navbar-brand {
+   
+    background-color: white;
+  }
+
+  .form-div {
+
+    background: black;
+    color: white;
+    padding: 20px;
+
+  }
+
+ 
