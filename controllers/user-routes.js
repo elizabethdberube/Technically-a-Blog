@@ -5,11 +5,15 @@ const User = require('../models/User');
 //will need a login page with option to sign up. Sign up page. 
 // create a user
 
+//Do I need utils folder?
+
+// get signup route
 router.get('/signup', async (req, res) => {
 
     res.render('signup')
 });
 
+// create user
 router.post('/signup', async (req, res) => {
     console.log(req.body);
 
@@ -40,6 +44,7 @@ router.post('/signup', async (req, res) => {
 });
 
 // sends user to hommpage if they are logged in or login page if not
+
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');
@@ -49,6 +54,7 @@ router.get('/login', (req, res) => {
 });
 
 // login
+
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({

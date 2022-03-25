@@ -1,9 +1,12 @@
 const router = require('express').Router();
-const Dashboard = require('../models/Dashboard');
+const { registerDecorator } = require('handlebars');
 
-router.get('/', async (req, res) => {
-    res.render('home', { Dashboard });
+
+// get dashboard route
+router.get('/dashboard', async (req, res) => {
+
+    res.render('dashboard')
 });
 
-module.exports = router;
 
+module.exports = router;

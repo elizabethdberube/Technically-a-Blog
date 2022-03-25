@@ -2,10 +2,10 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection.js');
 
 // extends off Sequelize's Model class
-class Dashboard extends Model { }
+class Blog extends Model { }
 
-// fields and rules for Blogs model
-Dashboard.init(
+// fields and rules for Blog model
+Blog.init(
 
     {
         id: {
@@ -27,4 +27,4 @@ Dashboard.init(
     }
 );
 
-module.exports = Dashboard; 
+module.exports = Blog; 
