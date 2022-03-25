@@ -37,13 +37,22 @@ body {
 
   .formBox {
 
-    
-    background: black;
     color: white;
     padding: 20px;
     
-   
 
+  }
+
+  .signUp {
+
+    margin-bottom: 5px;
+
+  }
+
+  .formText {
+
+    color: white; 
+   
   }
 
  
