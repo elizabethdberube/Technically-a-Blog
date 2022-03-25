@@ -1,5 +1,5 @@
-const Blog = require('../models/Blog.js');
-console.log(Blog);
+const Dashboard = require('../models/Dashboard.js');
+
 const blogData = [
 
     {
@@ -7,6 +7,6 @@ const blogData = [
     },
 ];
 
-const seedBlogs = () => Blog.bulkCreate(blogData);
+const seedBlogs = () => Dashboard.bulkCreate(blogData);
 
 module.exports = seedBlogs;

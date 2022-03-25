@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const Blog = require('../models/Blog');
+const Dashboard = require('../models/Dashboard');
 
 router.get('/', async (req, res) => {
-    res.render('home', { Blog });
+    res.render('home', { Dashboard });
 });
 
 module.exports = router;

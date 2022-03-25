@@ -13,7 +13,6 @@ body {
     background-color: white;
     margin-bottom: 0;
 
-
   }
 
   .nav-bar {
@@ -25,6 +24,7 @@ body {
   .navbar {
 
     justify-content: left;
+    margin-bottom: 20px;
 
   }
 
@@ -33,11 +33,20 @@ body {
     background-color: white;
   }
 
-  .form-div {
+  .formDiv {
+
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .formBox {
 
     background: black;
     color: white;
     padding: 20px;
+    
+   
 
   }
 
