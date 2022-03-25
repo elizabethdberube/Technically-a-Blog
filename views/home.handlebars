@@ -3,9 +3,9 @@
 {{#each blogData as |blogs|}}
 <div class="container">
     <div class="card border-primary mb-3 " style="max-width: 66rem;">
-        <div class="card-header">Header</div>
+        <div class="card-header">{{blogs.title}}</div>
         <div class="card-body text-primary">
-            <p class="card-text">{{blogs}}</p>
+            <p class="card-text">{{blogs.blogContent}}</p>
         </div>
     </div>
     {{/each}}

@@ -14,16 +14,32 @@ Blog.init(
             primaryKey: true,
             autoIncrement: true
         },
-        dashboardContent: {
+
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+
+        },
+
+        blogContent: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        blog_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'user',
+                key: 'id',
+                unique: false
+            }
         }
     },
     {
         sequelize,
         timestamps: false,
         freezeTableName: true,
-        underscored: true
+        underscored: true,
+        modelName: 'blog'
     }
 );
 
