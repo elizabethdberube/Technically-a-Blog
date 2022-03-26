@@ -3,19 +3,15 @@ const Blog = require('../models/Blog');
 
 // get blog route
 router.get('/', async (req, res) => {
-    res.render('home', { blogData });
+    const postData = await Blog.findAll().catch((err) => {
+        res.json(err);
+    });
+    const posts = postData.map((post) => post.get({ plain: true }));
+    res.render('home', { posts });
 });
+
 
 module.exports = router;
 
 
 
-// // get all dishes
-// router.get('/', async (req, res) => {
-//     res.render('all', { dishes });
-// });
-
-// // get one dish
-// router.get('/dish/:num', async (req, res) => {
-//     return res.render('dish', dishes[req.params.num - 1]);
-// });

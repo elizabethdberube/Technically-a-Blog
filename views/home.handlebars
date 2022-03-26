@@ -1,11 +1,15 @@
 {{! blogs will go here on home page }}
-
-{{#each blogData as |blogs|}}
+{{#each posts as |post|}}
+<div class="posts"></div>
 <div class="container">
     <div class="card border-primary mb-3 " style="max-width: 66rem;">
-        <div class="card-header">{{blogs.title}}</div>
+
+        <div class="card-header">{{post.title}}</div>
         <div class="card-body text-primary">
-            <p class="card-text">{{blogs.blogContent}}</p>
+            <p class="card-text">{{post.blogContent}}</p>
         </div>
     </div>
-    {{/each}}
+</div>
+</div>
+
+{{/each}}
