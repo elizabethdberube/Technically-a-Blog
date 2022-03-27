@@ -10,6 +10,15 @@ router.get('/', async (req, res) => {
     res.render('home', { posts });
 });
 
+// sends user to hommpage if they are logged in or login page if not
+
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
+});
 
 module.exports = router;
 

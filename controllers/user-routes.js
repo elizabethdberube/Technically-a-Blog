@@ -32,7 +32,9 @@ router.post('/signup', async (req, res) => {
 
 
         req.session.save(() => {
+            req.session.user_id = userData.id;
             req.session.loggedIn = true;
+
 
             res.redirect('/');
 
@@ -43,20 +45,11 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-// sends user to hommpage if they are logged in or login page if not
-
-router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-        res.redirect('/');
-        return;
-    }
-    res.render('login');
-});
-
 // login
 
 router.post('/login', async (req, res) => {
     try {
+
         const userData = await User.findOne({
             where: {
                 email: req.body.email,
@@ -74,6 +67,7 @@ router.post('/login', async (req, res) => {
         }
 
         req.session.save(() => {
+            req.session.user_id = userData.id;
             req.session.loggedIn = true;
 
             res.status(200).json({ user: userData, message: 'You are now logged in' });
