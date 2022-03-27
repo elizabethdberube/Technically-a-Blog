@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { registerDecorator } = require('handlebars');
 const User = require('../models/User');
 
+
 //will need a login page with option to sign up. Sign up page. 
 // create a user
 
@@ -19,7 +20,7 @@ router.post('/signup', async (req, res) => {
 
     try {
         const userData = await User.create({
-            username: req.body.email,
+
             email: req.body.email,
             password: req.body.password,
         });
@@ -58,6 +59,7 @@ router.post('/login', async (req, res) => {
 
         if (!userData) {
             res.status(400).json({ message: 'Please enter correct email and password' });
+
             return;
         }
         const validPassword = await userData.checkPassword(req.body.password);

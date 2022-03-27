@@ -25,17 +25,6 @@ const seedAll = async () => {
 seedAll();
 
 
-// seed everything
-// const seedAll = async () => {
-
-//     await sequelize.sync({ force: true });
-
-//     await Blog.bulkCreate(seedBlogs);
-//     console.log('\n----- BLOG SYNCED -----\n');
-
-//     process.exit(0);
-
-// };
 
 
 

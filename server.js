@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const sequelize = require('./config/connection');
 var session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+// const flash = require('connect-flash');
 
 const hbs = exphbs.create({});
 
@@ -35,6 +36,8 @@ app.use(session(sess));
 // use routes
 app.use(routes);
 app.use(express.static('public'));
+
+//app.use(flash());
 
 // sync models to the database and turns on server
 sequelize.sync({ force: false }).then(() => {
