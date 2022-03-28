@@ -4,6 +4,8 @@ const exphbs = require('express-handlebars');
 const sequelize = require('./config/connection');
 var session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const path = require('path')
+
 // const flash = require('connect-flash');
 
 const hbs = exphbs.create({});
@@ -18,7 +20,12 @@ app.set('view engine', 'handlebars');
 
 const sess = {
     secret: process.env.SESSION_SECRET,
-    cookie: {},
+    cookie: {
+        maxAge: 3600,
+        httpOnly: true,
+        secure: false,
+        sameSite: 'strict',
+    },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
@@ -30,12 +37,13 @@ const sess = {
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session(sess));
 
 // use routes
 app.use(routes);
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 //app.use(flash());
 

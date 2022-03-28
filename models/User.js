@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 
 // extends off Sequelize's Model class. Check password and encrypts
 class User extends Model {
-    checkUserPassword(loginPassword) {
+    checkPassword(loginPassword) {
         return bcrypt.compareSync(loginPassword, this.password);
     }
 }

@@ -46,7 +46,7 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-// login
+
 
 router.post('/login', async (req, res) => {
     try {
@@ -72,22 +72,29 @@ router.post('/login', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.loggedIn = true;
 
-            res.status(200).json({ user: userData, message: 'You are now logged in' });
+            res.status(200).json({ message: 'You are now logged in' });
         });
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
+    return;
 });
 
 
 
 // logout
 
-router.post('logout', (req, res) => {
+router.get('/logout', async (req, res) => {
+
+    res.render('logout')
+});
+
+router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
+            res.redirect('/');
         });
     } else {
         res.status(404).end();
