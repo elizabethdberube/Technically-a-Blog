@@ -1,23 +1,13 @@
-<div class="d-flex justify-content-center">
-    <div class=" col-4 ">
-
-        <div href="/dashboard" class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter the title of your post here"
-                aria-label="Recipient's username" aria-describedby="basic-addon2">
-
-            <div class="input-group-append">
-
-            </div>
+<div href="/dashboard" class="blog">
+    <form class="blogForm">
+        <div class="form-group">
+            <label for="exampleFormControlInput1" class="formText">Title</label>
+            <input type="email" class="form-control" id="title" placeholder="Enter the title of your post here">
         </div>
-
-        <div class="input-group">
-            <div class="input-group-prepend">
-
-            </div>
-            <textarea class="form-control" aria-label="With textarea" placeholder="Enter post here"></textarea>
-
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1" class="formText">Post</label>
+            <textarea class="form-control" id="blog" rows="3" placeholder="Enter your post here"></textarea>
         </div>
-
-    </div>
-    <a href="/dashboard" class="btn btn-primary">Submit</a>
+        <a type="submit" class="btn btn-primary" placeholder="Enter post here">Submit</a>
+    </form>
 </div>

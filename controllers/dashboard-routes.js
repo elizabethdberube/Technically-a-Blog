@@ -12,9 +12,11 @@ router.get('/dashboard', async (req, res) => {
 
 router.post('/dashboard', withAuth, async (req, res) => {
     try {
+        console.log('hello');
         const newBlog = await Blog.create({
+            ...req.body,
             title: req.body.title,
-            email: req.body.email,
+            blogContent: req.body.blogContent,
         });
 
         res.status(200).json(newBlog);
