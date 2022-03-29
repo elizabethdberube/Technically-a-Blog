@@ -1,8 +1,8 @@
 const handleBlog = async (event) => {
     event.preventDefault();
 
-    const title = document.querySelector('#title').ariaValueMax.trim();
-    const blogContent = document.querySelector('#blog').ariaValueMax.trim();
+    const title = document.querySelector('#title').value.trim();
+    const blogContent = document.querySelector('#blog').value.trim();
 
     if (title && blogContent) {
 

@@ -37,7 +37,7 @@ router.post('/signup', async (req, res) => {
             req.session.loggedIn = true;
 
 
-            res.redirect('/');
+            res.redirect('/login');
 
         });
     } catch (err) {
@@ -51,12 +51,13 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
 
-        const userData = await User.findOne({
+        let userData = await User.findOne({
             where: {
+
                 email: req.body.email,
             },
         });
-
+        console.log(userData);
         if (!userData) {
             res.status(400).json({ message: 'Please enter correct email and password' });
 
