@@ -21,15 +21,9 @@ router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create({
 
-            email: req.body.email,
+            name: req.body.name,
             password: req.body.password,
         });
-
-        // if (!userData) {
-        //     res.redirect('/login');
-
-        //     return;
-        // }
 
 
         req.session.save(() => {
@@ -54,19 +48,22 @@ router.post('/login', async (req, res) => {
         let userData = await User.findOne({
             where: {
 
-                email: req.body.email,
+                name: req.body.name,
             },
         });
-        console.log(userData);
+
         if (!userData) {
-            res.status(400).json({ message: 'Please enter correct email and password' });
+
+            res.status(400).json({ message: 'There was a prolem with your username or password' });
 
             return;
         }
         const validPassword = await userData.checkPassword(req.body.password);
 
         if (!validPassword) {
-            res.status(400).json({ message: 'Please enter correct email and password' });
+
+            res.status(400).json({ message: 'There was a prolem with your username or password' });
+            return;
         }
 
         req.session.save(() => {
@@ -94,7 +91,7 @@ router.get('/logout', async (req, res) => {
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
-            res.status(204).end();
+
             res.redirect('/');
         });
     } else {

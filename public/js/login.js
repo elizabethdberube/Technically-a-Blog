@@ -1,14 +1,14 @@
 const handleLogin = async (event) => {
     event.preventDefault();
 
-    const email = document.querySelector('#email').ariaValueMax.trim();
-    const password = document.querySelector('#password').ariaValueMax.trim();
+    const name = document.querySelector('#name').value.trim();
+    const password = document.querySelector('#password').value.trim();
 
-    if (email && password) {
+    if (name && password) {
 
         const response = await fetch('/login', {
             method: 'POST',
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ name, password }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -16,7 +16,8 @@ const handleLogin = async (event) => {
 
             document.location.replace('/dashboard');
         } else {
-            alert(response.statusText);
+            let jsonResponse = await response.json();
+            alert(jsonResponse.message);
         }
     }
 };
@@ -24,13 +25,13 @@ const handleLogin = async (event) => {
 const handleSignup = async (event) => {
     event.preventDefault();
 
-    const email = document.querySelector('#email').value.trim();
+    const name = document.querySelector('#name').value.trim();
     const password = document.querySelector('#password').value.trim();
 
-    if (email && password) {
+    if (name && password) {
         const response = await fetch('signup', {
             method: 'POST',
-            body: JSON.stringify({ email, password }),
+            body: JSON.stringify({ name, password }),
             headers: { 'Content-Type': 'application/json' },
         });
         if (response.ok) {
@@ -44,8 +45,8 @@ const handleSignup = async (event) => {
 
 document
     .querySelector('.login')
-    .addEventListener('submit', loginFormHandler);
+    .addEventListener('submit', handleLogin);
 
-document
-    .querySelector('.signup')
-    .addEventListener('submit', signupFormHandler);
+// document
+//     .querySelector('.signup')
+//     .addEventListener('submit', handleSignup);

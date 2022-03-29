@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { registerDecorator } = require('handlebars');
-const withAuth = require('../utils/auth');
+const userAuth = require('../utils/auth');
 const { Blog, User } = require('../models');
 
 
@@ -11,13 +11,15 @@ router.get('/dashboard', async (req, res) => {
 });
 
 // create blog
-router.post('/dashboard', withAuth, async (req, res) => {
+router.post('/dashboard', userAuth, async (req, res) => {
     try {
-        console.log('hello');
+
         const newBlog = await Blog.create({
             ...req.body,
             title: req.body.title,
             blogContent: req.body.blogContent,
+            user_id: req.session.user_id
+
         });
 
         res.status(200).json(newBlog);
@@ -27,13 +29,14 @@ router.post('/dashboard', withAuth, async (req, res) => {
 });
 
 //get blogs by user
+
 router.get('/dashboard', async (req, res) => {
     try {
         const blogData = await Blog.findAll({
             include: [
                 {
                     model: User,
-                    attributes: ['email'],
+                    attributes: ['name'],
                 },
             ],
         });
@@ -46,7 +49,7 @@ router.get('/dashboard', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
-});
+})
 
 
 module.exports = router;

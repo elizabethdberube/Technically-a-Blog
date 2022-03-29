@@ -3,13 +3,13 @@ const Blog = require('./Blog');
 
 User.hasMany(Blog, {
 
-    foreignKey: 'blog_id'
+    foreignKey: 'user_id'
 
 });
 
 Blog.belongsTo(User, {
 
-    foreignKey: 'blog_id',
+    foreignKey: 'user_id',
     onDelete: 'CASCADE',
 
 });

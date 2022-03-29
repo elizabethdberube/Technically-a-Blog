@@ -11,7 +11,7 @@ const handleBlog = async (event) => {
             body: JSON.stringify({ title, blogContent }),
             headers: { 'Content-Type': 'application/json' },
         });
-        console.log('hello');
+
         if (response.ok) {
 
             document.location.replace('/dashboard');
@@ -23,3 +23,5 @@ const handleBlog = async (event) => {
 document
     .querySelector('.blogForm')
     .addEventListener('submit', handleBlog);
+// console.log(document
+//     .querySelector('.blogForm'));

@@ -35,7 +35,9 @@
         <div class="nav-bar">
             <nav class="navbar navbar-light">
                 <a class="navbar-brand" href="/">Home</a>
+                {{#unless session.loggedIn}}
                 <a class="navbar-brand" href="/login">Login</a>
+                {{/unless}}
                 <a class="navbar-brand" href="/dashboard">Dashboard</a>
                 <a class="navbar-brand" href="/logout">Log Out</a>
             </nav>

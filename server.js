@@ -6,7 +6,6 @@ var session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const path = require('path')
 
-// const flash = require('connect-flash');
 
 const hbs = exphbs.create({});
 
@@ -18,19 +17,20 @@ const PORT = process.env.PORT || 3001;
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+const session_table = new SequelizeStore({
+    db: sequelize
+});
+
+session_table.sync();
+
 const sess = {
     secret: process.env.SESSION_SECRET,
     cookie: {
-        maxAge: 3600,
-        httpOnly: true,
-        secure: false,
-        sameSite: 'strict',
+        maxAge: 3600000
     },
     resave: false,
     saveUninitialized: true,
-    store: new SequelizeStore({
-        db: sequelize
-    })
+    store: session_table
 };
 
 
@@ -41,11 +41,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session(sess));
 
+app.use(function (req, res, next) {
+    res.locals.session = req.session;
+    next();
+});
+
 // use routes
 app.use(routes);
 // app.use(express.static('public'));
 
 //app.use(flash());
+
+
 
 // sync models to the database and turns on server
 sequelize.sync({ force: false }).then(() => {
