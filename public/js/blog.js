@@ -20,8 +20,10 @@ const handleBlog = async (event) => {
         }
     }
 };
+
+// const handleDelete = async (event) => {
+//     if(event.target.hasAttribute(''))
+// }
 document
     .querySelector('.blogForm')
     .addEventListener('submit', handleBlog);
-// console.log(document
-//     .querySelector('.blogForm'));

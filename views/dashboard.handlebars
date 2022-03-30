@@ -1,17 +1,25 @@
 <div href="/dashboard" class="blog">
-    <form method="post" class="blogForm">
-        <div class="form-group">
-            <label for="exampleFormControlInput1" class="formText">Title</label>
-            <input type="text" name="title" class="form-control" id="title"
-                placeholder="Enter the title of your post here">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1" class="formText">Post</label>
-            <textarea class="form-control" name="blogContent" id="blog" rows="3"
-                placeholder="Enter your post here"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" placeholder="Enter post here">Submit</button>
-    </form>
+    <a class="btn btn-primary" href="/blog">Add a post</a>
 </div>
+
+{{#each blog as |blogs|}}
+<div href="/dashboard/:id" class="posts"></div>
+<div class="container">
+    <div class="card border-primary mb-3 " style="max-width: 66rem;">
+
+        <div class="card-header">{{blogs.date_created}}</div>
+        <div class="card-header">Subject: {{ blogs.title }} By: {{ blogs.user.name}}</div>
+        <div class="card-body text-primary">
+            <p class="card-text">{{blogs.blogContent}}</p>
+            <form action="/dashboard/:id" method="post">
+                <button type="submit" class="btn btn-primary ">Delete</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+</div>
+
+{{/each}}
 
 <script src="/js/blog.js"></script>
