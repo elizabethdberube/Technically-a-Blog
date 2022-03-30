@@ -30,7 +30,7 @@ router.post('/signup', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.loggedIn = true;
 
-            res.status(200).json({ message: 'You are now logged in' });
+            res.status(200).json({ message: 'You are now logged in!' });
             res.redirect('/login');
 
         });

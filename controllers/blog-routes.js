@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Blog, User } = require('../models');
+const userAuth = require('../utils/auth');
 
 // get blog route
 router.get('/', async (req, res) => {
@@ -10,9 +11,10 @@ router.get('/', async (req, res) => {
                 attributes: ['name'],
             },
         ],
-    }).catch((err) => {
-        res.json(err);
     });
+    // .catch((err) => {
+    //     res.json(err);
+    // });
 
     const posts = postData.map((post) => post.get({ plain: true }));
 

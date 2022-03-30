@@ -1,3 +1,5 @@
+const dashboardBlogs = document.getElementById('dashboardBlogs');
+
 const handleBlog = async (event) => {
     event.preventDefault();
 
@@ -43,9 +45,42 @@ const handleComment = async (event) => {
     }
 };
 
-// const handleDelete = async (event) => {
-//     if(event.target.hasAttribute(''))
-// }
+const handleDelete = async (event) => {
+    if (event.target.hasAttribute('data-id')) {
+        const id = event.target.getAttribute('data-id');
+
+        const response = await fetch(`dashboard/${id}`, {
+            method: 'DELETE',
+        });
+        if (response.ok) {
+
+            document.location.replace('/dashboard');
+        } else {
+            alert(response.statusText);
+        }
+    }
+};
+
+
+// Turns elements into block
+function showButtons() {
+    let oneButton = document.getElementById("oneButton")
+    let twoButton = document.getElementById("twoButton")
+
+    oneButton.style.display = 'inline-block';
+    twoButton.style.display = 'inline-block';
+}
+
+function noButtons() {
+    let oneButton = document.getElementById("oneButton")
+    let twoButton = document.getElementById("twoButton")
+
+    oneButton.style.display = 'none';
+    twoButton.style.display = 'none';
+}
+
+
+
 document
     .querySelector('.blogForm')
     .addEventListener('submit', handleBlog);
@@ -53,3 +88,11 @@ document
 document
     .querySelector('.commentForm')
     .addEventListener('submit', handleComment);
+
+document
+    .querySelector('.deleteData')
+    .addEventListener('submit', handleDelete);
+
+dashboardBlogs.addEventListener("mouseover", showButtons);
+dashboardBlogs.addEventListener("mouseout", noButtons);
+

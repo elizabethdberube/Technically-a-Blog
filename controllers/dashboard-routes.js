@@ -7,7 +7,21 @@ const { Blog, User } = require('../models');
 // get dashboard route
 router.get('/dashboard', userAuth, async (req, res) => {
 
-    res.render('dashboard')
+    const blogData = await Blog.findAll({
+        where: {
+            user_id: req.session.user_id
+        },
+        include: [
+            {
+                model: User,
+                attributes: ['name'],
+            },
+        ],
+    });
+    console.log(blogData);
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
+
+    res.render('dashboard', { blogs, logged_in: req.session.loggedIn });
 });
 
 // create blog
@@ -29,31 +43,25 @@ router.post('/dashboard', userAuth, async (req, res) => {
     }
 });
 
-//get blogs by user
-
-router.get('/dashboard/:id', userAuth, async (req, res) => {
+router.delete('/dashboard/:id', userAuth, async (req, res) => {
     try {
-        console.log(req);
-        const blogData = await Blog.findByPk(req.params.id, {
-            include: [
-                {
-                    model: User,
-                    attributes: ['name'],
-                },
-            ],
+        const blogData = await Blog.destroy({
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id,
+            },
         });
-        console.log(blogData);
-        const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-        res.render('dashboard', {
-            ...blogs,
-            loggedIn: req.session.loggedIn
-        });
+        if (!blogData) {
+            res.status(404).json({ message: 'No blog found with this id!' });
+            return;
+        }
+
+        res.status(200).json(blogData);
     } catch (err) {
         res.status(500).json(err);
     }
 });
-
 
 // router.put('/:id', (req, res) => {
 //     Blog.update({

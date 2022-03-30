@@ -1,18 +1,21 @@
-<div href="/dashboard" class="blog">
+<div class="blogDiv">
     <a class="btn btn-primary" href="/blog">Add a post</a>
 </div>
 
 {{#each blogs as |blog|}}
-<div href="/dashboard/:id" class="posts"></div>
+<div class="posts"></div>
 <div class="container">
-    <div class="card border-primary mb-3 " style="max-width: 66rem;">
+    <div class="card border-primary mb-3 " id="dashboardBlogs" style="max-width: 66rem;">
 
         <div class="card-header">{{blog.date_created}}</div>
-        <div class="card-header">Subject: {{ blogs.title }} By: {{ blog.user.name}}</div>
+        <div class="card-header">Subject: {{ blog.title }} By: {{ blog.user.name}}</div>
         <div class="card-body text-primary">
             <p class="card-text">{{blog.blogContent}}</p>
-            <form action="/dashboard/:id" method="post">
-                <button type="submit" class="btn btn-primary ">Delete</button>
+            <form class="deleteData" action="/dashboard/{{blog.id}}" method="DELETE">
+                <button id="oneButton" type="submit" class="btn btn-primary" style="display:none"
+                    data-id="{{blog.id}}">Delete</button>
+                <button id="twoButton" type="submit" class="btn btn-primary" style="display:none"
+                    data-id="{{blog.id}}">Update</button>
             </form>
 
         </div>
