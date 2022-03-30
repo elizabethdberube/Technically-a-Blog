@@ -14,9 +14,9 @@ router.get('/signup', async (req, res) => {
     res.render('signup')
 });
 
-// create user
+// create user route
 router.post('/signup', async (req, res) => {
-    console.log(req.body);
+
 
     try {
         const userData = await User.create({
@@ -30,18 +30,25 @@ router.post('/signup', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.loggedIn = true;
 
-
+            res.status(200).json({ message: 'You are now logged in' });
             res.redirect('/login');
 
         });
+
+        if (!userData) {
+
+            res.status(400).json({ message: 'There was a problem with your username or password' });
+
+            return;
+        }
     } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
+
+        res.status(500).json({ message: 'There was a problem with your username or password' });
     }
 });
 
 
-
+// user login route
 router.post('/login', async (req, res) => {
     try {
 
@@ -54,7 +61,7 @@ router.post('/login', async (req, res) => {
 
         if (!userData) {
 
-            res.status(400).json({ message: 'There was a prolem with your username or password' });
+            res.status(400).json({ message: 'There was a problem with your username or password' });
 
             return;
         }
@@ -62,7 +69,7 @@ router.post('/login', async (req, res) => {
 
         if (!validPassword) {
 
-            res.status(400).json({ message: 'There was a prolem with your username or password' });
+            res.status(400).json({ message: 'There was a problem with your username or password' });
             return;
         }
 
@@ -73,7 +80,7 @@ router.post('/login', async (req, res) => {
             res.status(200).json({ message: 'You are now logged in' });
         });
     } catch (err) {
-        console.log(err);
+
         res.status(500).json(err);
     }
     return;

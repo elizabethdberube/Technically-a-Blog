@@ -29,7 +29,7 @@ const handleSignup = async (event) => {
     const password = document.querySelector('#password').value.trim();
 
     if (name && password) {
-        const response = await fetch('signup', {
+        const response = await fetch('/signup', {
             method: 'POST',
             body: JSON.stringify({ name, password }),
             headers: { 'Content-Type': 'application/json' },
@@ -38,7 +38,8 @@ const handleSignup = async (event) => {
 
             document.location.replace('/dashboard');
         } else {
-            alert(response.statusText);
+            let jsonResponse = await response.json();
+            alert(jsonResponse.message);
         }
     }
 }
@@ -47,6 +48,6 @@ document
     .querySelector('.login')
     .addEventListener('submit', handleLogin);
 
-// document
-//     .querySelector('.signup')
-//     .addEventListener('submit', handleSignup);
+document
+    .querySelector('.signup')
+    .addEventListener('submit', handleSignup);
