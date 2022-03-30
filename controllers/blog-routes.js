@@ -19,6 +19,30 @@ router.get('/', async (req, res) => {
     res.render('home', { posts, logged_in: req.session.loggedIn });
 });
 
+// get add a comment route
+router.get('/comment', userAuth, async (req, res) => {
+
+    res.render('comment')
+});
+
+// create comment
+router.post('/dashboard', userAuth, async (req, res) => {
+    try {
+
+        const newBlog = await Blog.create({
+            ...req.body,
+            comment: req.body.comment,
+            user_id: req.session.user_id
+
+
+        });
+
+        res.status(200).json(newBlog);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
 // sends user to hommpage if they are logged in or login page if not
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {

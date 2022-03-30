@@ -9,8 +9,13 @@
         <div class="card-body text-primary">
             <p class="card-text">{{post.blogContent}}</p>
 
-
+            <a class="btn btn-primary " href="/comment">Back</a>
         </div>
+    </div>
+
+    <div class="card-body text-primary">
+        {{#if posts.comments}}Comment: {{post.comments}} By: {{ post.user.name}} {{else}} {{/if}}
+
     </div>
 </div>
 </div>

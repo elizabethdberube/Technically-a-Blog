@@ -2,15 +2,15 @@
     <a class="btn btn-primary" href="/blog">Add a post</a>
 </div>
 
-{{#each blog as |blogs|}}
+{{#each blogs as |blog|}}
 <div href="/dashboard/:id" class="posts"></div>
 <div class="container">
     <div class="card border-primary mb-3 " style="max-width: 66rem;">
 
-        <div class="card-header">{{blogs.date_created}}</div>
-        <div class="card-header">Subject: {{ blogs.title }} By: {{ blogs.user.name}}</div>
+        <div class="card-header">{{blog.date_created}}</div>
+        <div class="card-header">Subject: {{ blogs.title }} By: {{ blog.user.name}}</div>
         <div class="card-body text-primary">
-            <p class="card-text">{{blogs.blogContent}}</p>
+            <p class="card-text">{{blog.blogContent}}</p>
             <form action="/dashboard/:id" method="post">
                 <button type="submit" class="btn btn-primary ">Delete</button>
             </form>

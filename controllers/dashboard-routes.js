@@ -43,7 +43,7 @@ router.get('/dashboard/:id', userAuth, async (req, res) => {
             ],
         });
         console.log(blogData);
-        const blogs = blogData.get({ plain: true });
+        const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
         res.render('dashboard', {
             ...blogs,
@@ -53,6 +53,31 @@ router.get('/dashboard/:id', userAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
+// router.put('/:id', (req, res) => {
+//     Blog.update({
+//         comment: req.params.comment,
+
+
+//     })
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 router.delete('/:id', userAuth, async (req, res) => {
     try {
