@@ -9,6 +9,7 @@ router.get('/dashboard', userAuth, async (req, res) => {
 
     const blogData = await Blog.findAll({
         where: {
+
             user_id: req.session.user_id
         },
         include: [
@@ -18,7 +19,7 @@ router.get('/dashboard', userAuth, async (req, res) => {
             },
         ],
     });
-    console.log(blogData);
+
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
     res.render('dashboard', { blogs, logged_in: req.session.loggedIn });
@@ -43,8 +44,10 @@ router.post('/dashboard', userAuth, async (req, res) => {
     }
 });
 
+// delete blog
 router.delete('/dashboard/:id', userAuth, async (req, res) => {
     try {
+
         const blogData = await Blog.destroy({
             where: {
                 id: req.params.id,
@@ -63,23 +66,46 @@ router.delete('/dashboard/:id', userAuth, async (req, res) => {
     }
 });
 
-router.put('/:user_id', userAuth, async (req, res) => {
+// get update blog route
+router.get('/updateBlog/:id', userAuth, async (req, res) => {
+    const blogData = await Blog.findByPk(req.params.id, {
+
+        include: [
+            {
+                model: User,
+                attributes: ['name'],
+            },
+        ],
+    });
+    console.log(req.params.id);
+    if (blogData) {
+        const blog = blogData.get({ plain: true });
+
+        res.render('updateBlog', { blog })
+    }
+});
+
+
+// update blog by id
+router.put('/dashboard/:id', userAuth, async (req, res) => {
     try {
+
         const blogData = await Blog.update({
 
-            title: req.params.title,
-            blogContent: req.params.blogContent,
+            title: req.body.title,
+            blogContent: req.body.blogContent,
         },
             {
                 where: {
-                    user_id: req.params,
-                    user_id: req.params.blogContent,
-
+                    id: req.params.id,
                 },
             }
         )
+        console.log('hi');
+
+
         if (!blogData) {
-            res.status(404).json({ message: 'No blog found with this id!' });
+            res.status(404).json({ message: 'Blog can not be empty' });
             return;
         }
 
@@ -90,22 +116,7 @@ router.put('/:user_id', userAuth, async (req, res) => {
 
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// deletes blog by id
 router.delete('/:id', userAuth, async (req, res) => {
     try {
         const blogData = await Blog.destroy({

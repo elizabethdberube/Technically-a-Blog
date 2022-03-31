@@ -3,10 +3,6 @@ const { registerDecorator } = require('handlebars');
 const User = require('../models/User');
 
 
-//will need a login page with option to sign up. Sign up page. 
-// create a user
-
-//Do I need utils folder?
 
 // get signup route
 router.get('/signup', async (req, res) => {
@@ -88,8 +84,7 @@ router.post('/login', async (req, res) => {
 
 
 
-// logout
-
+// logout route
 router.get('/logout', async (req, res) => {
 
     res.render('logout')
@@ -99,8 +94,9 @@ router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
 
-            res.redirect('/');
+
         });
+        res.redirect('/');
     } else {
         res.status(404).end();
     }

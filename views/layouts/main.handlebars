@@ -39,7 +39,9 @@
                 <a class="navbar-brand" href="/login">Login</a>
                 {{/unless}}
                 <a class="navbar-brand" href="/dashboard">Dashboard</a>
+                {{#if session.loggedIn}}
                 <a class="navbar-brand" href="/logout">Log Out</a>
+                {{/if}}
             </nav>
 
 

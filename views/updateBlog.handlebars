@@ -1,14 +1,14 @@
 <div class="blog">
-    <form method="post" class="updateForm" action="/dashboard">
+    <form method="post" data-id="{{blog.id}}" class="updateForm" action="/dashboard">
         <div class="form-group">
             <label for="exampleFormControlInput1" class="formText">Title</label>
             <input type="text" name="title" class="form-control" id="title"
-                placeholder="Enter the title of your post here">
+                placeholder="Enter the title of your post here" value="{{blog.title}}">
         </div>
-        <div class="form-group">
+        <div class=" form-group">
             <label for="exampleFormControlTextarea1" class="formText">Post</label>
             <textarea class="form-control" name="blogContent" id="blog" rows="3"
-                placeholder="Enter your post here"></textarea>
+                placeholder="Enter your post here">{{blog.blogContent}}</textarea>
         </div>
         <button type="submit" class="btn btn-primary" placeholder="Enter post here">Submit</button>
         <a class="btn btn-primary " href="/dashboard">Back</a>

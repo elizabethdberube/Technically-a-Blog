@@ -1,86 +1,84 @@
 body {
 
-    background-image: url("/background.jpg");
-    
-  }
-  .con-div {
+  background-image: url("/background.jpg");
 
-    background-color: white;
-  }
-
-  .jumbotron {
-    
-    background-color: white;
-    margin-bottom: 0;
-
-  }
-
-  .nav-bar {
-
-    background-color: white !important;
-
-  }
-
-  .navbar {
-
-    justify-content: left;
-    margin-bottom: 50px;
-
-  }
-
-  .navbar-brand {
-   
-    background-color: white;
-  }
-
-.posts{
-
-   margin-top: 20px;
-   
 }
 
-  .formBox {
+.con-div {
 
-    color: white;
-    padding: 20px;
-    
+  background-color: white;
+}
 
-  }
+.jumbotron {
 
-  .signUp {
+  background-color: white;
+  margin-bottom: 0;
 
-    margin-bottom: 5px;
+}
 
-  }
+/* navbar */
+.nav-bar {
 
-  .formText {
+  background-color: white !important;
 
-    color: white; 
+}
 
-   
-  }
+.navbar {
 
-  .question {
-    margin-bottom: 10px;
-  }
+  justify-content: left;
+  margin-bottom: 50px;
 
-  .logout {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+}
 
- .blog{
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   margin-left: 20%;
-   margin-right: 20%;
- }
+.navbar-brand {
 
- .blogDiv{
+  background-color: white;
+}
+
+.posts {
+
+  margin-top: 20px;
+
+}
+
+.formBox {
+
+  color: white;
+  padding: 20px;
+
+
+}
+
+/* signup */
+.signUp {
+
+  margin-bottom: 5px;
+
+}
+
+/* text for form section */
+.formText {
+
+  color: white;
+
+
+}
+
+.question {
+  margin-bottom: 10px;
+}
+
+/* logout */
+.logout {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* blogs */
+.blogDiv {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -88,7 +86,34 @@ body {
   margin-right: 20%;
 }
 
-#oneButton{
+.blog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+
+.subjectLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+/* dashbord blog buttons */
+
+#oneButton {
   margin: 20px;
- 
+
+}
+
+.deleteData {
+  display: none;
+
+}
+
+.card:hover .deleteData {
+  display: inline-block;
 }

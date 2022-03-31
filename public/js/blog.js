@@ -4,9 +4,9 @@ const commentForm = document.querySelector('.commentForm');
 const updateForm = document.querySelector('.updateForm');
 const deleteData = document.querySelector('.deleteData');
 
+// handles blogs info and alerts errors to user
 const handleBlog = async (event) => {
     event.preventDefault();
-    alert('hello');
 
     const title = document.querySelector('#title').value.trim();
     const blogContent = document.querySelector('#blog').value.trim();
@@ -28,12 +28,13 @@ const handleBlog = async (event) => {
     }
 };
 
+// handles comments info and alerts errors to user
 const handleComment = async (event) => {
     event.preventDefault();
 
     const commentContent = document.querySelector('#comment').value.trim();
 
-    if (title && blogContent) {
+    if (commentContent) {
 
         const response = await fetch('/comment', {
             method: 'POST',
@@ -50,16 +51,19 @@ const handleComment = async (event) => {
     }
 };
 
+// handle blog update info and alerts errors to user
 const handleUpdate = async (event) => {
     event.preventDefault();
 
     const title = document.querySelector('#title').value.trim();
     const blogContent = document.querySelector('#blog').value.trim();
+    let id = event.target.getAttribute('data-id');
+
 
     if (title && blogContent) {
 
-        const response = await fetch('/updateBlog', {
-            method: 'POST',
+        const response = await fetch(`/dashboard/${id}`, {
+            method: 'PUT',
             body: JSON.stringify({ title, blogContent }),
             headers: { 'Content-Type': 'application/json' },
         });
@@ -73,12 +77,14 @@ const handleUpdate = async (event) => {
     }
 };
 
-
+// deletes blog
 const handleDelete = async (event) => {
+    event.preventDefault();
+
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
-
-        const response = await fetch(`dashboard/${id}`, {
+        console.log(id);
+        const response = await fetch(`/dashboard/${id}`, {
             method: 'DELETE',
         });
         if (response.ok) {
@@ -91,29 +97,10 @@ const handleDelete = async (event) => {
 };
 
 
-// Turns elements into inline-block
-function showButtons() {
-    let oneButton = document.getElementById("oneButton")
-    let twoButton = document.getElementById("twoButton")
-
-    oneButton.style.display = 'inline-block';
-    twoButton.style.display = 'inline-block';
-}
-
-// Turns elements into display none
-function noButtons() {
-    let oneButton = document.getElementById("oneButton")
-    let twoButton = document.getElementById("twoButton")
-
-    oneButton.style.display = 'none';
-    twoButton.style.display = 'none';
-}
 
 
-dashboardBlogs.addEventListener("mouseover", showButtons);
-dashboardBlogs.addEventListener("mouseout", noButtons);
-
-const handleSubmit = async () => {
+// handles all the event listeners
+const handleButtons = async () => {
 
     if (blogForm) {
         blogForm.addEventListener('submit', handleBlog);
@@ -122,9 +109,14 @@ const handleSubmit = async () => {
     if (commentForm) {
         commentForm.addEventListener('submit', handleComment);
     }
-    if (updateForm) {
-        updateForm.addEventListener('click', handleUpdate);
+    if (deleteData) {
+        deleteData.addEventListener('submit', handleDelete);
     }
+
+    if (updateForm) {
+        updateForm.addEventListener('submit', handleUpdate);
+    }
+
 }
 
-handleSubmit();
+handleButtons();

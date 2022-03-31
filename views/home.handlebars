@@ -5,7 +5,11 @@
     <div class="card border-primary mb-3 " style="max-width: 66rem;">
 
         <div class="card-header">{{post.date_created}}</div>
-        <div class="card-header">Subject: {{ post.title }} By: {{ post.user.name}}</div>
+        <div class="card-header subjectLine">
+            <div>Subject: {{ post.title }}</div>
+            <div>By: {{ post.user.name}}</div>
+
+        </div>
         <div class="card-body text-primary">
             <p class="card-text">{{post.blogContent}}</p>
 

@@ -1,6 +1,7 @@
 const signup = document.querySelector('.signup');
 const login = document.querySelector('.login');
 
+// handles login info and alerts user of errors
 const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -25,6 +26,7 @@ const handleLogin = async (event) => {
     }
 };
 
+// handles signup info and alerts user of errors
 const handleSignup = async (event) => {
     event.preventDefault();
 
@@ -46,6 +48,8 @@ const handleSignup = async (event) => {
         }
     }
 }
+
+// handles event listeners
 
 const handleSubmit = async () => {
     if (login) {

@@ -5,17 +5,19 @@
 {{#each blogs as |blog|}}
 <div class="posts"></div>
 <div class="container">
-    <div class="card border-primary mb-3 " id="dashboardBlogs" style="max-width: 66rem;">
+    <div class="card border-primary mb-3 dashboardBlogs" style="max-width: 66rem;">
 
         <div class="card-header">{{blog.date_created}}</div>
-        <div class="card-header">Subject: {{ blog.title }} By: {{ blog.user.name}}</div>
+        <div class="card-header subjectLine">
+            <div>Subject: {{ blog.title }}</div>
+            <div>By: {{ blog.user.name}}</div>
+
+        </div>
         <div class="card-body text-primary">
             <p class="card-text">{{blog.blogContent}}</p>
-            <form class="deleteData" action="/dashboard/{{blog.id}}" method="DELETE">
-                <button id="oneButton" type="submit" class="btn btn-primary" style="display:none"
-                    data-id="{{blog.id}}">Delete</button>
-                <a id="twoButton" href="/updateBlog" class="btn btn-primary" style="display:none"
-                    data-id="{{blog.id}}">Update</a>
+            <form class="deleteData" data-id="{{blog.id}}" action="/dashboard/{{blog.id}}" method="DELETE">
+                <button id="oneButton" type="submit" class="btn btn-primary">Delete</button>
+                <a id="twoButton" href="/updateBlog/{{blog.id}}" class="btn btn-primary">Update</a>
             </form>
 
         </div>

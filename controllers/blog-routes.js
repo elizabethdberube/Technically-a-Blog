@@ -12,9 +12,7 @@ router.get('/', async (req, res) => {
             },
         ],
     });
-    // .catch((err) => {
-    //     res.json(err);
-    // });
+
 
     const posts = postData.map((post) => post.get({ plain: true }));
 
@@ -28,9 +26,9 @@ router.get('/comment', userAuth, async (req, res) => {
 });
 
 // create comment
-router.post('/dashboard', userAuth, async (req, res) => {
+router.post('/comment', userAuth, async (req, res) => {
     try {
-
+        console.log(req);
         const newBlog = await Blog.create({
             ...req.body,
             comment: req.body.comment,
@@ -45,11 +43,6 @@ router.post('/dashboard', userAuth, async (req, res) => {
     }
 });
 
-// get add a comment route
-router.get('/updateBlog', userAuth, async (req, res) => {
-
-    res.render('updateBlog')
-});
 
 // sends user to homepage if they are logged in or login page if not
 router.get('/login', (req, res) => {
@@ -59,6 +52,8 @@ router.get('/login', (req, res) => {
     }
     res.render('login');
 });
+
+
 
 module.exports = router;
 
