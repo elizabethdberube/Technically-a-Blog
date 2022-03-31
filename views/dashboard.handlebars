@@ -14,8 +14,8 @@
             <form class="deleteData" action="/dashboard/{{blog.id}}" method="DELETE">
                 <button id="oneButton" type="submit" class="btn btn-primary" style="display:none"
                     data-id="{{blog.id}}">Delete</button>
-                <button id="twoButton" type="submit" class="btn btn-primary" style="display:none"
-                    data-id="{{blog.id}}">Update</button>
+                <a id="twoButton" href="/updateBlog" class="btn btn-primary" style="display:none"
+                    data-id="{{blog.id}}">Update</a>
             </form>
 
         </div>

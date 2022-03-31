@@ -1,3 +1,6 @@
+const signup = document.querySelector('.signup');
+const login = document.querySelector('.login');
+
 const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -44,10 +47,14 @@ const handleSignup = async (event) => {
     }
 }
 
-document
-    .querySelector('.login')
-    .addEventListener('submit', handleLogin);
+const handleSubmit = async () => {
+    if (login) {
+        login.addEventListener('submit', handleLogin);
+    }
 
-document
-    .querySelector('.signup')
-    .addEventListener('submit', handleSignup);
+    if (signup) {
+        signup.addEventListener('submit', handleSignup);
+    }
+}
+
+handleSubmit();

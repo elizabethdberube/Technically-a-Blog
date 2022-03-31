@@ -31,7 +31,7 @@ router.post('/signup', async (req, res) => {
             req.session.loggedIn = true;
 
             res.status(200).json({ message: 'You are now logged in!' });
-            res.redirect('/login');
+
 
         });
 

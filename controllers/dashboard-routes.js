@@ -63,13 +63,32 @@ router.delete('/dashboard/:id', userAuth, async (req, res) => {
     }
 });
 
-// router.put('/:id', (req, res) => {
-//     Blog.update({
-//         comment: req.params.comment,
+router.put('/:user_id', userAuth, async (req, res) => {
+    try {
+        const blogData = await Blog.update({
 
+            title: req.params.title,
+            blogContent: req.params.blogContent,
+        },
+            {
+                where: {
+                    user_id: req.params,
+                    user_id: req.params.blogContent,
 
-//     })
-// })
+                },
+            }
+        )
+        if (!blogData) {
+            res.status(404).json({ message: 'No blog found with this id!' });
+            return;
+        }
+
+        res.status(200).json(blogData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
+});
 
 
 

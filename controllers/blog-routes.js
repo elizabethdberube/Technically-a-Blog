@@ -45,7 +45,13 @@ router.post('/dashboard', userAuth, async (req, res) => {
     }
 });
 
-// sends user to hommpage if they are logged in or login page if not
+// get add a comment route
+router.get('/updateBlog', userAuth, async (req, res) => {
+
+    res.render('updateBlog')
+});
+
+// sends user to homepage if they are logged in or login page if not
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');
