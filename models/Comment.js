@@ -34,6 +34,16 @@ Comment.init(
                 key: 'id',
                 unique: false
             }
+        },
+        blog_id: {
+            type: DataTypes.INTEGER,
+
+            references: {
+                model: 'blog',
+                key: 'id',
+                unique: false
+            }
+
         }
     },
     {

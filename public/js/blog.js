@@ -32,13 +32,14 @@ const handleBlog = async (event) => {
 const handleComment = async (event) => {
     event.preventDefault();
 
-    const commentContent = document.querySelector('#comment').value.trim();
+    const comments = document.querySelector('#comment').value.trim();
+    const blog_id = event.target.getAttribute('data-blog-id');
 
-    if (commentContent) {
+    if (comments) {
 
-        const response = await fetch('/comment', {
+        const response = await fetch(`/comment/${blog_id}`, {
             method: 'POST',
-            body: JSON.stringify({ commentContent }),
+            body: JSON.stringify({ comments }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -77,13 +78,13 @@ const handleUpdate = async (event) => {
     }
 };
 
-// deletes blog
+// handles delete info
 const handleDelete = async (event) => {
     event.preventDefault();
 
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
-        console.log(id);
+
         const response = await fetch(`/dashboard/${id}`, {
             method: 'DELETE',
         });

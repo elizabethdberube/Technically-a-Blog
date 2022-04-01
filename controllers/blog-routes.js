@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Blog, User } = require('../models');
+const { Blog, User, Comment } = require('../models');
 const userAuth = require('../utils/auth');
 
 // get blog route
@@ -9,6 +9,16 @@ router.get('/', async (req, res) => {
             {
                 model: User,
                 attributes: ['name'],
+            },
+            {
+                model: Comment,
+                attributes: ['comments'],
+                include: [
+                    {
+                        model: User,
+                        attributes: ['name'],
+                    }
+                ]
             },
         ],
     });
@@ -20,19 +30,20 @@ router.get('/', async (req, res) => {
 });
 
 // get add a comment route
-router.get('/comment', userAuth, async (req, res) => {
+router.get('/comment/:blog_id', userAuth, async (req, res) => {
 
-    res.render('comment')
+    res.render('comment', { blog_id: req.params.blog_id });
 });
 
 // create comment
-router.post('/comment', userAuth, async (req, res) => {
+router.post('/comment/:blog_id', userAuth, async (req, res) => {
     try {
-        console.log(req);
-        const newBlog = await Blog.create({
+
+        const newBlog = await Comment.create({
             ...req.body,
-            comment: req.body.comment,
-            user_id: req.session.user_id
+            comments: req.body.comments,
+            user_id: req.session.user_id,
+            blog_id: req.params.blog_id
 
 
         });

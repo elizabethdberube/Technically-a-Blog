@@ -13,14 +13,15 @@
         <div class="card-body text-primary">
             <p class="card-text">{{post.blogContent}}</p>
 
-            <a class="btn btn-primary " href="/comment">Comment</a>
+            <a class="btn btn-primary " href="/comment/{{post.id}}">Comment</a>
+            <div class="card-body text-primary">
+                {{#each post.Comments as |comment|}}Comment: {{comment.comments}} By: {{ comment.user.name}} {{/each}}
+
+            </div>
         </div>
     </div>
 
-    <div class="card-body text-primary">
-        {{#if post.comments}}Comment: {{post.comments}} By: {{ post.user.name}} {{else}} {{/if}}
 
-    </div>
 </div>
 </div>
 
