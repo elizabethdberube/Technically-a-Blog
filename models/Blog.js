@@ -31,10 +31,6 @@ Blog.init(
             allowNull: false
         },
 
-        comments: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
         user_id: {
             type: DataTypes.INTEGER,
 
