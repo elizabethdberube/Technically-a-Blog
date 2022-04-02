@@ -7,19 +7,28 @@
         <div class="card-header">{{post.date_created}}</div>
         <div class="card-header subjectLine">
             <div>Subject: {{ post.title }}</div>
-            <div>By: {{ post.user.name}}</div>
+
 
         </div>
-        <div class="card-body text-primary">
-            <p class="card-text">{{post.blogContent}}</p>
 
-            <a class="btn btn-primary " href="/comment/{{post.id}}">Comment</a>
-            <div class="card-body text-primary">
-                {{#each post.Comments as |comment|}}Comment: {{comment.comments}} By: {{ comment.user.name}} {{/each}}
+        <div class="card-body text-primary ">
 
+            <div class="helloButton">
+                <p class="card-text">{{post.blogContent}}</p>
+                <div class="byCom">By: {{ post.user.name}}</div>
+                <a class="btn btn-primary " href="/comment/{{post.id}}">Comment</a>
+
+                {{#each post.Comments as |comment|}}
+                <div class="subjectLine">
+
+                    <div class="words">Comment: {{comment.comments}} </div>
+                    <div class="words">By: {{ comment.user.name}} </div>
+                </div>
+                {{/each}}
             </div>
         </div>
     </div>
+</div>
 
 
 </div>

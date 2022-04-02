@@ -101,6 +101,15 @@ body {
   justify-content: space-between;
 }
 
+.words {
+  margin-top: 10px;
+
+}
+
+.byCom {
+  margin-bottom: 10px;
+
+}
 
 /* dashbord blog buttons */
 
@@ -115,5 +124,14 @@ body {
 }
 
 .card:hover .deleteData {
+  display: inline-block;
+}
+
+.helloButton {
+  display: none;
+
+}
+
+.card:hover .helloButton {
   display: inline-block;
 }

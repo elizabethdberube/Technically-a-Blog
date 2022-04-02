@@ -2,7 +2,7 @@ const dashboardBlogs = document.getElementById('dashboardBlogs');
 const blogForm = document.querySelector('.blogForm');
 const commentForm = document.querySelector('.commentForm');
 const updateForm = document.querySelector('.updateForm');
-const deleteData = document.querySelector('.deleteData');
+
 
 // handles blogs info and alerts errors to user
 const handleBlog = async (event) => {
@@ -102,6 +102,7 @@ const handleDelete = async (event) => {
 
 // handles all the event listeners
 const handleButtons = async () => {
+    const delete_buttons = document.querySelectorAll('.deleteBut');
 
     if (blogForm) {
         blogForm.addEventListener('submit', handleBlog);
@@ -110,14 +111,25 @@ const handleButtons = async () => {
     if (commentForm) {
         commentForm.addEventListener('submit', handleComment);
     }
-    if (deleteData) {
-        deleteData.addEventListener('submit', handleDelete);
-    }
+
+
 
     if (updateForm) {
         updateForm.addEventListener('submit', handleUpdate);
+
     }
 
-}
+    delete_buttons.forEach((delete_button) => {
+        console.log('hi')
+        delete_button.addEventListener('submit', handleDelete);
+
+    });
+
+};
+
+
+
+
 
 handleButtons();
+

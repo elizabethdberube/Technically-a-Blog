@@ -15,8 +15,8 @@
         </div>
         <div class="card-body text-primary">
             <p class="card-text">{{blog.blogContent}}</p>
-            <form class="deleteData" data-id="{{blog.id}}" action="/dashboard/{{blog.id}}" method="DELETE">
-                <button id="oneButton" type="submit" class="btn btn-primary">Delete</button>
+            <form method="DELETE" class="deleteData deleteBut" data-id="{{blog.id}}" action="/dashboard">
+                <button type="submit" class="btn btn-primary ">Delete</button>
                 <a id="twoButton" href="/updateBlog/{{blog.id}}" class="btn btn-primary">Update</a>
             </form>
 

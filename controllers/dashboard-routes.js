@@ -77,7 +77,7 @@ router.get('/updateBlog/:id', userAuth, async (req, res) => {
             },
         ],
     });
-    console.log(req.params.id);
+
     if (blogData) {
         const blog = blogData.get({ plain: true });
 
@@ -101,7 +101,6 @@ router.put('/dashboard/:id', userAuth, async (req, res) => {
                 },
             }
         )
-        console.log('hi');
 
 
         if (!blogData) {
