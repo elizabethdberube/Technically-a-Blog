@@ -120,7 +120,7 @@ const handleButtons = async () => {
     }
 
     delete_buttons.forEach((delete_button) => {
-        console.log('hi')
+
         delete_button.addEventListener('submit', handleDelete);
 
     });
