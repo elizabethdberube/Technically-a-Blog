@@ -48,9 +48,6 @@ app.use(function (req, res, next) {
 
 // use routes
 app.use(routes);
-// app.use(express.static('public'));
-
-//app.use(flash());
 
 
 
