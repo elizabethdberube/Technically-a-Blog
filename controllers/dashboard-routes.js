@@ -135,7 +135,7 @@ router.delete('/:id', userAuth, async (req, res) => {
     }
 })
 
-// get create a log page
+// get create a blog page
 router.get('/blog', userAuth, async (req, res) => {
 
     res.render('blog')
