@@ -48,7 +48,7 @@ liz@durableprogramming.com
 
 [GitHub Repo](https://github.com/elizabethdberube/Technically-a-Blog) 
 
-[Deployed Application](https://intense-cove-80644.herokuapp.com/) 
+[Deployed Application](https://technically-a-blog-2.herokuapp.com/) 
 
 
 ----
