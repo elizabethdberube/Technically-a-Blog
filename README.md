@@ -22,6 +22,8 @@ Some features of this application.
 
 * [Questions](#questions)
 
+* [Technologies](#technologies)
+
 * [Pictures](#pictures)
 
 ---
@@ -40,6 +42,18 @@ Pull requests. Feel free to open a pull requst on my GitHub.
 If you have nay questions about this project then you can contact me directly at 
 
 liz@durableprogramming.com
+
+----
+
+## Technologies
+
+Technologies used in this project:
+
+* Express
+* Path
+* Sequelize
+* Handlebars
+* Session
 
 ----
 
