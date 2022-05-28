@@ -49,8 +49,6 @@ app.use(function (req, res, next) {
 // use routes
 app.use(routes);
 
-
-
 // sync models to the database and turns on server
 sequelize.sync({ force: false }).then(() => {
 

@@ -117,21 +117,3 @@ body {
   margin: 20px;
 
 }
-
-.deleteData {
-  display: none;
-
-}
-
-.card:hover .deleteData {
-  display: inline-block;
-}
-
-.helloButton {
-  display: none;
-
-}
-
-.card:hover .helloButton {
-  display: inline-block;
-}
